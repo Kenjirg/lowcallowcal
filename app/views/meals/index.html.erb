@@ -1,0 +1,78 @@
+<section class="section">
+	<div class="container">
+	</div>
+</section>
+<% @meals.each do |meal| %>
+	<section class="section store-section">
+	  <div class="container">
+	    <div class="card has-store">
+	      <div class="store-info">
+	        <%= link_to meal_path(meal.id) do %>
+	          <figure class="image is-3by2">
+	          		<img src="http://via.placeholder.com/1600x900" alt="placeholder">
+	          </figure>
+	        <% end %>
+	        <div class="card-content has-border-right">
+	        	<%= link_to edit_meal_path(meal.id), class:'button is-small is-primary is-outlined is-edit' do %>
+	            	<i class="fa fa-pencil-square-o"></i>
+	        	<% end %>
+	          <div class="media">
+	            <div class="media-left">
+	              <figure class="image is-48x48">
+	              	<img src="http://via.placeholder.com/48x48" alt="placeholder">
+	              </figure>
+	            </div>
+	            <div class="media-content">
+	              <%= link_to meal_path(meal.id) do %>
+	                <p class="title is-4"><%= meal.name %></p>
+	              <% end %>
+	              <p class="subtitle is-6">@johnsmith</p>
+	            </div>
+	          </div>
+	          <div class="content has-description">
+	            <%= truncate meal.description,length:50 %>
+	          </div>
+	          <div class="content has-address">
+	          </div>
+	          <div class="columns">
+	            <div class="column is-3">
+	              <div class="title is-4">$150</div>
+	              <div class="subtitle">最低價</div>
+	            </div>
+	            <div class="column is-3">
+	              <div class="title is-4">15</div>
+	              <div class="subtitle">項商品</div>
+	            </div>
+	            <div class="column is-6">
+	              <div class="title is-4"></div>
+	              <div class="subtitle">聯絡電話</div>
+	            </div>
+	          </div>
+	        </div>
+	      </div>
+	      <div class="store-menu">
+	        <div class="titlebar has-text-centered">Flavors</div>
+	        <div class="card-content">
+	          <div class="columns is-multiline">
+				<% meal.flavors.each do |flavor| %>
+		            <div class="column is-4">
+		              <div class="card">		              	
+		                <div class="card-image">
+		                  <figure class="image is-4by3">
+		                    <img src="http://via.placeholder.com/1600x900" alt="placeholder">
+		                  </figure>
+		                </div>
+		                <div class="card-content">
+		                  <div><%= flavor.name %></div>
+		                  <div class="title is-5"></div>
+		                </div>		                
+		              </div>
+		            </div>
+				<% end %>
+	          </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</section>
+<% end %>
