@@ -1,0 +1,2 @@
+class BusinessDaysController < ApplicationController
+end
