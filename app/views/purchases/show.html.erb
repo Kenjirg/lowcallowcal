@@ -1,0 +1,82 @@
+<section class="section store-image-section">
+  <div class="container">
+    <div class="field">
+      <%= link_to '查看所有提案',purchases_path,class:'button is-primary' %>
+      <%= link_to '查看此提案的訂單',purchase_orders_path(@purchase.id),class:'button is-primary' %>
+    </div>
+    <div class="field">
+    </div>
+    <figure class="image">
+      <img src="http://via.placeholder.com/1600x900" class="store-picture" alt="placeholder">
+      <div class="card">
+        <div class="card-content">
+          <div class="media">
+            <div class="media-left">
+              <figure class="image is-48x48">
+                <img src="http://via.placeholder.com/48x48" alt="placeholder">
+              </figure>
+            </div>
+            <div class="media-content">
+              <p class="title is-4"><%= @purchase.store.name %></p>
+              <p class="subtitle is-6">發起人：<%= @purchase.user.email %></p>
+            </div>
+          </div>
+          <div class="content has-description">
+            <%= truncate @purchase.store.description,length:50 %>
+          </div>
+          <div class="content">
+            地址：<%= @purchase.store.address %><br>
+            電話：<%= @purchase.store.phone %>
+          </div>
+        </div>
+      </div>
+    </figure>
+  </div>
+</section>
+<section class="section items-section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-7">
+        <div class="columns is-multiline">
+          <% @purchase.store.items.each do |item| %>
+            <div class="column is-4">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-2by1">
+                    <img src="http://via.placeholder.com/1600x900" alt="placeholder">
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div><%= item.name %></div>
+                  <div class="title is-4">$<%= item.price %></div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      <div class="column is-5">
+        <div class="card">
+          <div class="card-content">
+            <h1 class="title is-5">購物列表</h1>
+
+            <%= form_for [@purchase, @order] do |f| %>
+
+              <%= f.fields_for :ordered_items do |item_form| %>
+                <%= render 'ordered_item_fields', f: item_form %>                            
+              <% end %>
+
+              <div class="field">
+                <%= link_to_add_association '新增商品', f, :ordered_items, class:'button is-success is-outlined' %>
+              </div>
+              <div class="field">
+                <input type="submit" value="確定" class="button is-primary is-medium is-fullwidth">
+              </div>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

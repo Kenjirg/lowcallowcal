@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   resources :business_days do
   	resources :orders
   end
+  resources :purchases
 end

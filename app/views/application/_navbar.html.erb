@@ -14,7 +14,7 @@
     <div class="nav-right nav-menu">
       <!--  todo: 加上連結 -->
       <%= link_to '看看菜色', meals_path, class:'nav-item is-tab' %>
-      <a class="nav-item is-tab">訂餐囉</a>
+      <%= link_to '訂餐囉', purchases_path, class:'nav-item is-tab' %>
       <a class="nav-item is-tab">帳戶管理</a>
       <% if current_user %>
         <%= link_to '登出',destroy_user_session_path,method: :delete,data:{confirm:'確定登出嗎？'},class:'nav-item is-tab' %>
