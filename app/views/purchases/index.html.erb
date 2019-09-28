@@ -1,6 +1,9 @@
 <section class="section purchases-section">
   <div class="container">
-    <h1 class="title is-4">所有團購</h1>
+    <h1 class="title is-4">送餐時段</h1>
+    <div class="field">
+      <%= link_to '新增時段', new_purchase_path,class:'button is-primary' %>
+    </div>
     <div class="columns is-multiline">
       <% @purchases.each do |purchase| %>
         <div class="column is-4">
@@ -20,13 +23,13 @@
                   </div>
                   <div class="media-content">
                       <%= link_to purchase_path(purchase) do %>
-                        <p class="title is-4"><%= purchase.store.name %></p>
+                        <p class="title is-4"><%= purchase.meal.name %></p>
                       <% end %>
-                    <p class="subtitle is-6">發起人：<%= purchase.user.email %></p>
+                    <p class="subtitle is-6">發起人：<%= purchase.user.name %></p>
                   </div>
                 </div>
                 <div class="content">
-                  <%= truncate purchase.store.description, length:30 %>
+                  <%= truncate purchase.meal.description, length:30 %>
                 </div>
                 <div class="columns">
                   <div class="column is-3">

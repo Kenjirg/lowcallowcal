@@ -14,10 +14,10 @@
 							</div>
 						</div>
 						<div class="field">
-							<%= f.label :store_id, '店家名稱', class:'label' %>
+							<%= f.label :meal_id, '店家名稱', class:'label' %>
 							<div class="control">
 								<span class="select">
-									<%= f.collection_select :store_id, Store.all, :id, :name %>
+									<%= f.collection_select :meal_id, Meal.all, :id, :name %>
 								</span>
 							</div>
 						</div>
