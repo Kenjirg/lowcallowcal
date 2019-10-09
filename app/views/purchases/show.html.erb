@@ -62,12 +62,12 @@
 
             <%= form_for [@purchase, @order] do |f| %>
 
-              <%= f.fields_for :ordered_items do |item_form| %>
-                <%= render 'ordered_item_fields', f: item_form %>
+              <%= f.fields_for :ordered_flavors do |flavor_form| %>
+                <%= render 'ordered_flavor_fields', f: flavor_form %>
               <% end %>
 
               <div class="field">
-                <%= link_to_add_association '新增商品', f, :ordered_items, class:'button is-success is-outlined' %>
+                <%= link_to_add_association '新增商品', f, :ordered_flavors, class:'button is-success is-outlined' %>
               </div>
               <div class="field">
                 <input type="submit" value="確定" class="button is-primary is-medium is-fullwidth">

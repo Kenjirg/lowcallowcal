@@ -5,5 +5,5 @@ class Order < ApplicationRecord
 	has_many :ordered_flavors
 	has_many :flavors, through: :ordered_flavors
 
-	accepts_nested_attributes_for :ordered_items, allow_destroy: true
+	accepts_nested_attributes_for :ordered_flavors, allow_destroy: true
 end
