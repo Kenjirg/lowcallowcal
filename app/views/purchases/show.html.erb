@@ -2,7 +2,7 @@
   <div class="container">
     <div class="field">
       <%= link_to '查看所有提案',purchases_path,class:'button is-primary' %>
-      <%= link_to '查看此提案的訂單',purchase_orders_path(@purchase.id),class:'button is-primary' %>
+      <%= link_to '查看此提案的訂單',purchases_path,class:'button is-primary' %>
     </div>
     <div class="field">
     </div>
@@ -17,16 +17,16 @@
               </figure>
             </div>
             <div class="media-content">
-              <p class="title is-4"><%= @purchase.store.name %></p>
-              <p class="subtitle is-6">發起人：<%= @purchase.user.email %></p>
+              <p class="title is-4"><%= @purchase.meal.name %></p>
+              <p class="subtitle is-6">發起人：<%= @purchase.user.name %></p>
             </div>
           </div>
           <div class="content has-description">
-            <%= truncate @purchase.store.description,length:50 %>
+            <%= truncate @purchase.meal.description,length:50 %>
           </div>
           <div class="content">
-            地址：<%= @purchase.store.address %><br>
-            電話：<%= @purchase.store.phone %>
+            地址：<%= @purchase.meal.name %><br>
+            電話：<%= @purchase.meal.name %>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@
     <div class="columns">
       <div class="column is-7">
         <div class="columns is-multiline">
-          <% @purchase.store.items.each do |item| %>
+          <% @purchase.meal.flavors.each do |flavor| %>
             <div class="column is-4">
               <div class="card">
                 <div class="card-image">
@@ -47,8 +47,8 @@
                   </figure>
                 </div>
                 <div class="card-content">
-                  <div><%= item.name %></div>
-                  <div class="title is-4">$<%= item.price %></div>
+                  <div><%= flavor.name %></div>
+                  <div class="title is-4">$<%= flavor.price %></div>
                 </div>
               </div>
             </div>
@@ -63,7 +63,7 @@
             <%= form_for [@purchase, @order] do |f| %>
 
               <%= f.fields_for :ordered_items do |item_form| %>
-                <%= render 'ordered_item_fields', f: item_form %>                            
+                <%= render 'ordered_item_fields', f: item_form %>
               <% end %>
 
               <div class="field">
