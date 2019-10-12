@@ -3,7 +3,7 @@
     <div class="nav-left">
       <!-- todo: 加上連結 -->
       <a class="nav-item">
-        <%= link_to 'Lowcal Lowcal', root_path, class:'nav-item' %>        
+        <%= link_to 'Lowcal Lowcal健身餐', root_path, class:'nav-item' %>        
       </a>
     </div>
     <span class="nav-toggle">
@@ -14,8 +14,7 @@
     <div class="nav-right nav-menu">
       <!--  todo: 加上連結 -->
       <%= link_to '看看菜色', meals_path, class:'nav-item is-tab' %>
-      <%= link_to '訂餐囉', purchases_path, class:'nav-item is-tab' %>
-      <a class="nav-item is-tab">帳戶管理</a>
+      <%= link_to '立即訂餐', purchases_path, class:'nav-item is-tab' %>
       <% if current_user %>
         <%= link_to '登出',destroy_user_session_path,method: :delete,data:{confirm:'確定登出嗎？'},class:'nav-item is-tab' %>
       <% else %>

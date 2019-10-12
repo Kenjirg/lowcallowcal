@@ -1,5 +1,5 @@
 class PurchasesController < ApplicationController
-	# before_action :authenticate_user!
+	before_action :authenticate_user!, only: [:create, :show]
 	def index
 		@purchases = Purchase.all
 	end
@@ -7,7 +7,7 @@ class PurchasesController < ApplicationController
 		@purchase = Purchase.new
 	end
 	def create
-		@purchase=current_user.purchases.build purchase_params
+		@purchase = current_user.purchases.build purchase_params
 		if @purchase.save
 			redirect_to purchases_path
 		else
